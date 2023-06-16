@@ -8,12 +8,12 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         let details = [
-            Weather(image: "wind", city: "Wind", temperature: "8 mph", weather: "Sunny"),
-            Weather(image: "cloud.bolt.rain.fill", city: "RAINFALL", temperature: "0\" in last 24 hours", weather: "None expected in next 10 days"),
-            Weather(image: "thermometer.sun.fill", city: "FEELS LIKE", temperature: "71°", weather: "Similar to the actual temperature"),
-            Weather(image: "humidity.fill", city: "Humidity", temperature: "45 %", weather: "The dew point is 47° right now"),
-            Weather(image: "wind", city: "VISIBILITY", temperature: "10 mi", weather: "It's perfectly clear"),
-            Weather(image: "i.circle", city: "PRESSURE", temperature: "29.95 inHg", weather: "Low to high")
+            Weather(image: "wind", weatherConditon: "Wind", temperature: "8 mph", notes: "Sunny"),
+            Weather(image: "cloud.bolt.rain.fill", weatherConditon: "RAINFALL", temperature: "0\" in last 24 hours", notes: "None expected in next 10 days"),
+            Weather(image: "thermometer.sun.fill", weatherConditon: "FEELS LIKE", temperature: "71°", notes: "Similar to the actual temperature"),
+            Weather(image: "humidity.fill", weatherConditon: "Humidity", temperature: "45 %", notes: "The dew point is 47° right now"),
+            Weather(image: "wind", weatherConditon: "VISIBILITY", temperature: "10 mi", notes: "It's perfectly clear"),
+            Weather(image: "i.circle", weatherConditon: "PRESSURE", temperature: "29.95 inHg", notes: "Low to high")
         ]
         
         return ZStack {
@@ -53,7 +53,7 @@ struct WeatherView: View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
                 Image(systemName: weather.image)
-                Text(weather.city)
+                Text(weather.weatherConditon)
                     .bold()
             }
             
@@ -63,7 +63,7 @@ struct WeatherView: View {
                     .lineLimit(2)
                     .padding(20)
                 
-                Text(weather.weather)
+                Text(weather.notes)
                     .font(.subheadline)
                     .lineLimit(2)
             }
@@ -79,9 +79,9 @@ struct WeatherView: View {
 struct Weather: Identifiable {
     let id = UUID()
     let image: String
-    let city: String
+    let weatherConditon: String
     let temperature: String
-    let weather: String
+    let notes: String
 }
 
 struct ContentView_Previews: PreviewProvider {
